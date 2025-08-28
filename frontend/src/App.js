@@ -1,22 +1,25 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useEffect, useState } from "react";
+import "./App.css";
 
 function App() {
+  const [message, setMessage] = useState("Loading...");
+
+  useEffect(() => {
+    fetch("http://localhost:8080/api/hello")
+      .then((response) => response.text())
+      .then((data) => setMessage(data))
+      .catch((error) => {
+        console.error("Error fetching data:", error);
+        setMessage("Error connecting to backend");
+      });
+  }, []);
+
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <h1>🚀 React + Spring Boot</h1>
+        <p>Message from backend:</p>
+        <h2>{message}</h2>
       </header>
     </div>
   );
