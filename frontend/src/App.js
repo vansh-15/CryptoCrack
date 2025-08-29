@@ -18,7 +18,8 @@ function App() {
     <div className="App">
       <header className="App-header">
         <h1>🚀 React + Spring Boot</h1>
-        <p>Message from backend:</p>
+        <p>Message from backend improved:</p>
+        <p>This is me </p>
         <h2>{message}</h2>
       </header>
     </div>
